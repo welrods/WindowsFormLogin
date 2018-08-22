@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MudaCor
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btnEnviar.Enabled = false;
+        }
+
+        private void muda_Texto(object sender, EventArgs e)
+        {
+            btnEnviar.Enabled = text1.Text != "" && text2.Text != "" && text3.Text != "" 
+            && text4.Text != "" && text5.Text != "" && text6.Text != "" ? true : false;
+        }
+
+        private void text_Enter(object sender, EventArgs e)
+        {
+            (sender as TextBox).BackColor = Color.Lime;
+        }
+
+        private void text_Leave(object sender, EventArgs e)
+        {
+            (sender as TextBox).BackColor = SystemColors.Window;
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in this.Controls)
+
+            {
+                if (item is TextBox)
+                    item.Text = "";
+            } 
+        }
+
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+            if (!btnEnviar.Enabled) return;
+            MessageBox.Show("Usuário cadastrado com sucesso!");
+
+            foreach (Control item in this.Controls)
+
+            {
+                if (item is TextBox)
+                    item.Text = "";
+            }
+        }
+
+    }
+    
